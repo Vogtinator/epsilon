@@ -73,6 +73,7 @@ class Rational final : public Number {
 public:
   /* The constructor build a irreductible fraction */
   Rational(const RationalNode * node) : Number(node) {}
+  Rational(const int i) : Rational((native_int_t)i) {}
   Rational(Integer & num, Integer & den);
   Rational(const Integer & numerator);
   Rational(native_int_t i);

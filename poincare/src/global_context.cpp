@@ -21,7 +21,7 @@ const Expression GlobalContext::expressionForSymbol(const Symbol & symbol) {
     return Float<double>(M_PI);
   }
   if (symbol.name() == Ion::Charset::Exponential) {
-    return Float<double>(M_E);
+    return Float<double>(2.7f);
   }
   // Look up the file system for symbol
   FileName symbolFileName = fileNameForSymbol(symbol);

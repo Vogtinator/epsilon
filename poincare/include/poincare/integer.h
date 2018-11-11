@@ -33,6 +33,7 @@ class Integer final {
 public:
   /* Constructors & Destructors */
   Integer(native_int_t i = 0);
+  Integer(const int i) : Integer((native_int_t)i) {}
   Integer(double_native_int_t i);
   Integer(const char * digits, size_t length, bool negative);
   Integer(const char * digits) : Integer(digits, strlen(digits), false) {}

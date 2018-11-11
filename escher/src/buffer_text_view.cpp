@@ -1,6 +1,7 @@
 #include <escher/buffer_text_view.h>
 #include <string.h>
 #include <assert.h>
+#include "ion.h"
 
 BufferTextView::BufferTextView(const KDFont * font, float horizontalAlignment, float verticalAlignment,
     KDColor textColor, KDColor backgroundColor) :

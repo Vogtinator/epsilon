@@ -3,6 +3,7 @@
 #include <poincare/evaluation.h>
 #include <poincare/matrix_complex.h>
 #include <cmath>
+#include "ion.h"
 extern "C" {
 #include <assert.h>
 }

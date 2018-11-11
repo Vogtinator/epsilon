@@ -4,6 +4,7 @@
 #include <poincare/left_parenthesis_layout.h>
 #include <poincare/right_parenthesis_layout.h>
 #include <assert.h>
+#include "ion.h"
 
 namespace Poincare {
 

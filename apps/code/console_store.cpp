@@ -2,6 +2,8 @@
 #include <assert.h>
 #include <string.h>
 
+#include "ion.h"
+
 namespace Code {
 
 static inline int min(int x, int y) { return (x<y ? x : y); }

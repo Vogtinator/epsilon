@@ -4,6 +4,7 @@
 #include <poincare/serialization_helper.h>
 #include <string.h>
 #include <assert.h>
+#include "ion.h"
 
 namespace Poincare {
 
