@@ -79,21 +79,21 @@ Ion::Keyboard::State Ion::Keyboard::scan() {
 Ion::Events::Event Ion::Events::getEvent(int * timeout) {
   do {
 	lcd_blit(pixels, SCR_320x240_565);
-	if(currentEvent == Ion::Events::None && any_key_pressed())
+
+	static uint64_t last_state = 0;
+	uint64_t state = any_key_pressed() ? (uint64_t)Ion::Keyboard::scan() : 0;
+	uint64_t pressed = state & ~last_state;
+	if(currentEvent == None && pressed != 0)
 	{
-		static uint64_t last_state = 0;
-		uint64_t state = Ion::Keyboard::scan() & ~last_state;
-		if(state)
-		{
-			int key;
-			for(key = 0; (state & 1) == 0; state >>= 1, ++key);
-			currentEvent = Ion::Events::Event((Ion::Keyboard::Key)key,
-                                      Ion::Events::isShiftActive(),
-                                      Ion::Events::isAlphaActive());
-			updateModifiersFromEvent(currentEvent);
-		}
-		last_state = state;
+		int key;
+		for(key = 0; (pressed & 1) == 0; pressed >>= 1, ++key);
+		currentEvent = Ion::Events::Event((Ion::Keyboard::Key)key,
+									Ion::Events::isShiftActive(),
+									Ion::Events::isAlphaActive());
+		updateModifiersFromEvent(currentEvent);
 	}
+	last_state = state;
+
 	if(*timeout)
 	{
 		int tosleep = *timeout >= 16 ? 16 : *timeout;
